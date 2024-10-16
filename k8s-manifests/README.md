@@ -2,12 +2,7 @@
 ## First setup kubernetes kubeadm/minikube cluster
 
 ## SetUp
-
--
-```bash
-cd two-tier-flask-app/k8s
-```
-- Now, execute below commands one by one
+- Execute below commands one by one
 ```bash
 kubectl apply -f mysql-pv.yml
 kubectl apply -f mysql-pvc.yml
@@ -18,7 +13,7 @@ kubectl apply -f mysql-deployment.yml
 ```bash
 kubectl apply -f mysql-svc.yml
 ```
-we must create a table in mysql pod before run two-tier-app(flaskapp) manifest file
+-we must create a table in mysql pod before run two-tier-app(flaskapp) manifest file
 #  Run the following command after deploying mysql
 ```bash
 kubectl exec <mysql-pod-name> -c mysql -it -- bash
@@ -30,7 +25,7 @@ show tables;
 CREATE TABLE messages (id INT AUTO_INCREMENT PRIMARY KEY, message TEXT);
 ```
 # Then Run the flask-application
-before run the deployment manifest make sure you put the absolute value of 'MYSQL_HOST="<mysql-cluster-ip>" in environment variable section
+```before run the deployment manifest make sure you put the absolute value of 'MYSQL_HOST="<mysql-cluster-ip>" in environment variable section```
 ```bash
 kubectl apply -f two-tier-app-deployment.yml
 ```
