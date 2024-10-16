@@ -13,14 +13,14 @@ This guide will walk you through deploying a two-tier application on AWS EKS.
    - Create a user named `eks-admin` with `AdministratorAccess`.
    - Generate Security Credentials (Access Key and Secret Access Key).
 
-2.** EKS Setup **
+2. ** EKS Setup **
 
-# AWS EKS Cluster Deployment with Terraform
+** AWS EKS Cluster Deployment with Terraform **
 
 This repository contains the necessary Terraform code to deploy an EKS cluster on AWS, including IAM roles, policies, and EKS node groups.
 
 ## Prerequisites
-#terraform eks config
+
 ```bash
 cd terraform-eks
 ```
@@ -42,14 +42,14 @@ aws configure
     EKS Node Group with auto-scaling configurations.
 
 # Terraform Resources
-# IAM Roles
+** IAM Roles **
 
     EKS Cluster Role: Allows the EKS cluster to assume the necessary permissions.
     Node Group Role: Allows EC2 instances to function as worker nodes in the EKS cluster.
 
 ## EKS Cluster
 
-#The EKS cluster is created in the default VPC and attached to subnets using the following configuration:
+# The EKS cluster is created in the default VPC and attached to subnets using the following configuration:
 
 ```bash
 resource "aws_eks_cluster" "main" {
@@ -67,7 +67,7 @@ resource "aws_eks_cluster" "main" {
 ```
 # EKS Node Group
 
-#The node group is created with a desired size of 1 and can scale up to 2 instances:
+# The node group is created with a desired size of 1 and can scale up to 2 instances:
 ```bash
 resource "aws_eks_node_group" "example" {
   cluster_name    = aws_eks_cluster.main.name
@@ -89,23 +89,23 @@ resource "aws_eks_node_group" "example" {
   ]
 }
 ```
-##Outputs
+## Outputs
 
-#After deploying the infrastructure, the following outputs are generated:
+**After deploying the infrastructure, the following outputs are generated: **
 
     Cluster Endpoint: The endpoint URL for the EKS cluster.
     Certificate Authority Data: The certificate data needed to authenticate kubectl commands.
 
-**Usage**
-#Initialize Terraform
+3. **Usage**
+# Initialize Terraform
 
-#First, initialize the Terraform project:
+# First, initialize the Terraform project:
 
 ```bash
 
 terraform init
 ```
-Apply the Terraform Plan
+** Apply the Terraform Plan **
 
 Apply the plan to provision the EKS cluster:
 
@@ -113,19 +113,19 @@ Apply the plan to provision the EKS cluster:
 
 terraform apply
 ```
-#Notes
-
+# Notes
+```
     The code uses the default VPC. Ensure that the default VPC exists in your AWS account, or modify the VPC configuration accordingly.
     The worker nodes are of type t3.micro to minimize cost. You can modify the instance type based on your workload.
-
-**Install kubectl:**
+```
+4. **Install kubectl:**
 ```bash
 curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin
 kubectl version --short --client
 ```
-#update Kubeconfig
+# update Kubeconfig
 
 **EKS Cluster Access from terminal**
 ```bash
@@ -140,7 +140,7 @@ kubectl config view
 ```
 # Deploy the Eks manifest file now
 
-**Clean Up**
+5. **Clean Up**
 
 ## To destroy the created EKS infrastructureon AWS:
 
