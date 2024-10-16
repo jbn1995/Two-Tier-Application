@@ -23,7 +23,7 @@ we must create a table in mysql pod before run two-tier-app(flaskapp) manifest f
 ```bash
 kubectl exec <mysql-pod-name> -c mysql -it -- bash
 mysql -u root -p
-#password=admin 
+** password=admin ** 
 show databases;
 use mydb;
 show tables;
