@@ -30,6 +30,7 @@ show tables;
 CREATE TABLE messages (id INT AUTO_INCREMENT PRIMARY KEY, message TEXT);
 ```
 # Then Run the flask-application
+before run the deployment manifest make sure you put the absolute value of 'MYSQL_HOST="<mysql-cluster-ip>" in environment variable section
 ```bash
 kubectl apply -f two-tier-app-deployment.yml
 ```
