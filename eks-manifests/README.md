@@ -139,7 +139,14 @@ kubectl get nodes
 kubectl config view
 ```
 # Deploy the Eks manifest file now
-
+```bash
+kubectl apply -f mysql-secrets.yml -f mysql-configmap.yml
+kubectl apply -f mysql-deployment.yml -f mysql-svc.yml
+```
+```bash
+kubectl apply -f two-tier-app-deployment.yml
+kubectl apply -f two-tier-app-svc.yml
+```
 5. **Clean Up**
 
 ## To destroy the created EKS infrastructureon AWS:
