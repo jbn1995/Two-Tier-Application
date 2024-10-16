@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: two-tier-app
-          image: jabin95/flaskapp:03
+          image: jabin95/flaskapp:04
           env:
             - name: MYSQL_HOST
               value: "10.106.126.169"          # this is your mysql's service clusture IP, Make sure to change it with yours
