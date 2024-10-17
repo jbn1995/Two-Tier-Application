@@ -22,7 +22,7 @@ To install the MySQL chart from the packaged .tgz file:
 
 ```bash
 
-helm install mysql-release ./mysql-chart-0.1.0.tgz
+helm install mysql-chart ./mysql-chart-0.1.0.tgz
 ```
 This command will deploy the MySQL database in your Kubernetes cluster with the Helm chart configuration.
 
@@ -32,7 +32,7 @@ To install the Flask app chart from the packaged .tgz file:
 
 ```bash
 
-helm install flask-app-release ./flask-app-chart-0.1.0.tgz
+helm install flask-app-chart ./flask-app-chart-0.1.0.tgz
 ```
 This will deploy the Flask application in your Kubernetes cluster.
 
