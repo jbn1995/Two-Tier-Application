@@ -5,6 +5,8 @@ This is a simple Flask app that interacts with a MySQL database. The app allows 
 - There is also a separate instruction-file in each of K8s-manifests and eks-manifests repository.
 
 - Make sure you read before deploy the applications on Kubernetes(EKS,Kubeadm/Minikube).
+
+- Also You can Deploy the Two-Tier Flask Application on Kubernetes using Helm.
 ```
 ## Docker Setup
 
