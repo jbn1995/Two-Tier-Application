@@ -1,19 +1,20 @@
 ## Flask App with MySQL 
 This is a simple Flask app that interacts with a MySQL database. The app allows users to submit messages, which are then stored in the database and displayed on the frontend.
-## Notes
+# Notes
 ```
 - There is also a separate instruction-file in each of K8s-manifests and eks-manifests repository.
+
+- You can deploy this application in Kind-cluster (A cluster where kubernetes run as a docker containers)
 
 - Make sure you read before deploy the applications on Kubernetes(EKS,Kubeadm/Minikube).
 
 - Also You can Deploy the Two-Tier Flask Application on Kubernetes using Helm.
 ```
-## Docker Setup
+# Docker Setup
 
 # Prerequisits
 
 Before you begin, make sure you have the following installed:
-
 - Docker
 - Git (optional, for cloning the repository)
 ## Setup
