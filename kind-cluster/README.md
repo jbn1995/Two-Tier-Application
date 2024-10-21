@@ -7,7 +7,8 @@
   ```bash
   clear
   ```
-
+- Inspect the repository and read the config.yml manifest for creating kind-cluster(Kubernetes in docker)
+  
 - Create a 3-node Kubernetes cluster using Kind:
   ```bash
   kind create cluster --config=config.yml --name=k8s-cluster
@@ -56,14 +57,9 @@
   cd k8s-manifests/
   ```
 
-- Apply Kubernetes YAML specifications for the voting app:
+- Apply Kubernetes YAML specifications for the Two-tier-app:
   ```bash
   kubectl apply -f k8s-manifests/
-  ```
-
-- List all Kubernetes resources:
-  ```bash
-  kubectl get all
   ```
 - Run the mysql query after deployment of mysql pod
   ```bash
@@ -77,10 +73,14 @@
 ```
 - Change the MYSQL_HOST ip in deployment file of flaskapp(name-two-tier-app-deployment.yaml)
   
+- List all Kubernetes resources:
+  ```bash
+  kubectl get all
+  ```
+
 - Forward local ports for accessing the voting and result apps:
   ```bash
-  kubectl port-forward service/vote 5000:5000 --address=0.0.0.0 &
-  kubectl port-forward service/result 5001:5001 --address=0.0.0.0 &
+  kubectl port-forward service/two-tier-app-service 30050:80 --address=0.0.0.0 &
 ```
 ## 6. Installing Argo CD
 
