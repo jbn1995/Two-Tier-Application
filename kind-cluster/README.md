@@ -10,7 +10,7 @@
 
 - Create a 3-node Kubernetes cluster using Kind:
   ```bash
-  kind create cluster --config=config.yml
+  kind create cluster --config=config.yml --name=k8s-cluster
   ```
 
 - Check cluster information:
@@ -52,41 +52,34 @@
 
 - Clone the voting app repository:
   ```bash
-  git clone https://github.com/dockersamples/example-voting-app.git
-  cd example-voting-app/
+  git clone https://github.com/jbn1995/Two-Tier-Application.git
+  cd k8s-manifests/
   ```
 
 - Apply Kubernetes YAML specifications for the voting app:
   ```bash
-  kubectl apply -f k8s-specifications/
+  kubectl apply -f k8s-manifests/
   ```
 
 - List all Kubernetes resources:
   ```bash
   kubectl get all
   ```
-
+- Run the mysql query after deployment of mysql pod
+  ```bash
+  kubectl exec <mysql-pod-name> -c mysql -it -- bash
+  mysql -u root -p
+  ** password=admin ** 
+  show databases;
+  use mydb;
+  show tables;
+CREATE TABLE messages (id INT AUTO_INCREMENT PRIMARY KEY, message TEXT);
+```
 - Forward local ports for accessing the voting and result apps:
   ```bash
   kubectl port-forward service/vote 5000:5000 --address=0.0.0.0 &
   kubectl port-forward service/result 5001:5001 --address=0.0.0.0 &
-  ```
-
----
-
-## 5. Managing Files in Example Voting App
-
-- Navigate and view files:
-  ```bash
-  cd ..
-  cd seed-data/
-  ls
-  cat Dockerfile
-  cat generate-votes.sh
-  ```
-
----
-
+```
 ## 6. Installing Argo CD
 
 - Create a namespace for Argo CD:
@@ -113,7 +106,15 @@
   ```bash
   kubectl port-forward -n argocd service/argocd-server 8443:443 &
   ```
+---
+---
 
+## 9. Argo CD Initial Admin Password
+
+- Retrieve Argo CD admin password:
+  ```bash
+  kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
+  ```
 ---
 
 ## 7. Deleting Kubernetes Cluster
@@ -137,17 +138,7 @@
   kubectl -n kubernetes-dashboard create token admin-user
   ```
 
----
 
-## 9. Argo CD Initial Admin Password
-
-- Retrieve Argo CD admin password:
-  ```bash
-  kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
-  ```
-
-
----
 
 ## 10. Install HELM
 
