@@ -1,5 +1,5 @@
 
-# Terminal Command History for K8s Kind Voting App
+# Terminal Command History for Two-Tier-application deploy on Kind-cluster
 
 ## 1. Creating and Managing Kubernetes Cluster with Kind
 
@@ -73,8 +73,10 @@
   show databases;
   use mydb;
   show tables;
-CREATE TABLE messages (id INT AUTO_INCREMENT PRIMARY KEY, message TEXT);
+  CREATE TABLE messages (id INT AUTO_INCREMENT PRIMARY KEY, message TEXT);
 ```
+- Change the MYSQL_HOST ip in deployment file of flaskapp(name-two-tier-app-deployment.yaml)
+  
 - Forward local ports for accessing the voting and result apps:
   ```bash
   kubectl port-forward service/vote 5000:5000 --address=0.0.0.0 &
