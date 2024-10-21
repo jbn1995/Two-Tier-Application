@@ -72,6 +72,21 @@
   CREATE TABLE messages (id INT AUTO_INCREMENT PRIMARY KEY, message TEXT);
 ```
 - Change the MYSQL_HOST ip in deployment file of flaskapp(name-two-tier-app-deployment.yaml)
+  ```bash
+  spec:
+      containers:
+        - name: two-tier-app
+          image: jabin95/flaskapp:04
+          env:
+            - name: MYSQL_HOST
+              value: "10.96.174.75"          # this is your mysql's service clusture IP, Make sure to change it with yours
+            - name: MYSQL_PASSWORD
+              value: "admin"
+            - name: MYSQL_USER
+              value: "root"
+            - name: MYSQL_DB
+              value: "mydb"
+```
   
 - List all Kubernetes resources:
   ```bash
