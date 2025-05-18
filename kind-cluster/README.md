@@ -199,7 +199,11 @@ sum(rate(container_network_receive_bytes_total{namespace="default"}[5m])) by (po
 sum(rate(container_network_transmit_bytes_total{namespace="default"}[5m])) by (pod)
 
 ```
+```bash
+helm uninstall kind-prometheus --namespace monitoring
 
+
+```
 
 ---
 
